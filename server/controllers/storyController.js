@@ -7,14 +7,17 @@ const geminiService = require('../services/geminiService');
  * @param {object} res - Express response object.
  */
 const generateStory = async (req, res) => {
-  const { prompt, length } = req.body;
+  // CORRECT: Destructure prompt, length, AND history from req.body
+  const { prompt, length, history } = req.body; //
 
   if (!prompt) {
     return res.status(400).json({ error: 'Prompt is required.' });
   }
 
   try {
-    const generatedText = await geminiService.generateContent(prompt, length);
+    // CORRECT: Pass prompt, history, and length to geminiService.generateContent
+    // The history parameter needs to be explicitly passed for chat functionality.
+    const generatedText = await geminiService.generateContent(prompt, history, length);
 
     // Store the generated text in res.locals for the logging middleware
     res.locals.generation = generatedText;
@@ -22,6 +25,7 @@ const generateStory = async (req, res) => {
     res.json({ text: generatedText });
   } catch (error) {
     console.error('Error in storyController.generateStory:', error.message);
+    // Use the error.message from the service if available for more specific errors
     res.status(500).json({ error: error.message || 'Story generation failed.' });
   }
 };
@@ -31,7 +35,6 @@ const getInferenceLogs = (req, res) => {
     // In this in-memory version, logs are just in req.session
     res.json(req.session.inferenceLog || []);
 };
-
 
 module.exports = {
   generateStory,

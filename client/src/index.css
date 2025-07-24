@@ -9,3 +9,36 @@ body {
   background-color: #f8f8f8;
   color: #333;
 }
+
+.user-input-highlight {
+  background-color: #e0f2fe; /* Light blue background */
+  padding: 0.1em 0.3em;
+  border-radius: 0.25em;
+  font-weight: bold;
+  color: #1e40af; /* Darker blue text */
+  display: inline; /* To ensure it wraps with text */
+}
+
+/* For user's input */
+.user-input-highlight {
+  /* Using a background color to highlight the user's input text visually */
+  background-color: #e0f2fe; /* A light blue */
+  padding: 0.1em 0.3em; /* Small padding around the text */
+  border-radius: 0.25em; /* Slightly rounded corners */
+  font-weight: bold; /* Make user's text bold */
+  color: #1e40af; /* A darker blue for text color */
+  /* display: inline-block; - Use if you want it to behave like a block but flow with text.
+                            For <p> tags, direct class is usually enough. */
+}
+
+/* For AI's output (default white/dark gray text) */
+.ai-output {
+  color: #374151; /* A dark gray for AI text */
+  /* You can add specific styling here if you want AI output to look different from default */
+}
+
+/* General paragraph styling within the story display for consistent spacing */
+.mb-6.p-6 > p { /* Targets paragraphs directly inside the story display div */
+    margin-bottom: 0.5rem; /* Space between paragraphs */
+    margin-top: 0.5rem; /* Space between paragraphs */
+}
