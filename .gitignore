@@ -1,0 +1,15 @@
+# Node.js
+node_modules/
+npm-debug.log
+.env
+.DS_Store # macOS specific
+*.log
+
+# Build artifacts (for client-side React app)
+client/build/
+client/dist/ # If you use Vite/Rollup for client
+client/.env.local # If you have local client env vars
+
+# Local development files (for server)
+server/node_modules/
+server/.env
